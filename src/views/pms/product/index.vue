@@ -403,14 +403,14 @@
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
-          this.list = response.data.list;
+          this.list = response.data.records;
           this.total = response.data.total;
         });
       },
       getBrandList() {
         fetchBrandList({pageNum: 1, pageSize: 100}).then(response => {
           this.brandOptions = [];
-          let brandList = response.data.list;
+          let brandList = response.data.records;
           for (let i = 0; i < brandList.length; i++) {
             this.brandOptions.push({label: brandList[i].name, value: brandList[i].id});
           }
@@ -442,7 +442,7 @@
         });
         if(row.productAttributeCategoryId!=null){
           fetchProductAttrList(row.productAttributeCategoryId,{type:0}).then(response=>{
-            this.editSkuInfo.productAttr=response.data.list;
+            this.editSkuInfo.productAttr=response.data.records;
           });
         }
       },
